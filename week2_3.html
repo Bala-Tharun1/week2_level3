@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <center>
+        <img src = CodeIn.png alt = "CodeIn.img" width = 150px/>
+    </center>
+</head>
+<body>
+    <pre>
+        "Level 3 Practice Programs
+        Write a LeapYear program that takes a year as input and outputs the Year is a Leap Year or not a Leap Year. 
+        Hint => 
+        The LeapYear program only works for year >= 1582, corresponding to a year in the Gregorian calendar. So ensure to check for the same. 
+        Further, the Leap Year is a Year divisible by 4 and not 100 unless it is divisible by 400. E.g. 1800 is not a Leap Year and 2000 is a Leap Year.
+        Write code having multiple if else statements based on conditions provided above and a second part having only one if statement and multiple logical 
+        import java.util.Scanner;
+        
+        
+        public class LeapYear{
+            // Main method
+            public static void main(String[] args){
+                // Create a Scanner
+                try (Scanner input = new Scanner(System.in)){
+                    int year = input.nextInt();
+                    // Check if the year is greater than 1582
+                    if(year>=1582){
+                        // Check if the year is a leap year
+                        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) System.out.println("Leap Year");
+                        else System.out.println("Not a Leap Year");
+                    }
+                }
+            }
+        }
+        
+        Rewrite program 1 to determine Leap Year with single if condition using logical and && and or || operators
+        import java.util.Scanner;
+        
+        
+        public class LeapYearSingle{
+            // Main method
+            public static void main(String[] args){
+                // Create a Scanner
+                try (Scanner input = new Scanner(System.in)){
+                    int year = input.nextInt();
+                    // Check if the year is greater than 1582 and if it is a leap year
+                    if(year>=1582 && (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) System.out.println("Leap Year");
+                    else System.out.println("Not a Leap Year");
+                }
+            }
+        }
+        Write a program to input marks and 3 subjects physics, chemistry and maths. Compute the percentage and then calculate the grade as per the following guidelines 
+        
+        Hint => 
+        Ensure the Output clearly shows the Average Mark as well as the Grade and Remarks
+        
+        
+        import java.util.Scanner;
+        
+        
+        public class SubjectGrades {
+            // Main method
+            public static void main(String[] args) {
+                // Create a Scanner
+                try (Scanner input = new Scanner(System.in)){
+                    // Get the marks of the student
+                    double physics = input.nextDouble();
+                    double chemistry = input.nextDouble();
+                    double maths = input.nextDouble();
+                    double percentage = ((physics+chemistry+maths)/3);
+                    // Check if the marks are valid
+                    if(percentage>=80) System.out.println("Grade: A"+" "+"Remarks: Level 4, above agency-normalized standards");
+                    if(percentage>=70 && percentage<=79) System.out.println("Grade: B"+" "+"Remarks: Level 3, at agency-normalized standards");
+                    if(percentage>=60 && percentage<=69) System.out.println("Grade: c"+" "+"Remarks: Level 2, below, but approaching agency-normalized standards");
+                    if(percentage>=70 && percentage<=59) System.out.println("Grade: D"+" "+"Remarks: Level 1, well below agency-normalized standards");
+                    if(percentage>=70 && percentage<=49) System.out.println("Grade: E"+" "+"Remarks: Level 1-, too below agency-normalized standards");
+                    if(percentage>=0 && percentage<=39) System.out.println("Grade: R"+" "+"Remarks: Remedial standards");
+                }
+        
+        
+            }
+        }
+        Write a Program to check if the given number is a prime number or not
+        Hint => 
+        A number that can be divided exactly only by itself and 1 are Prime Numbers,
+        Prime Numbers checks are done for number greater than 1
+        Loop through all the numbers from 2 to the user input number and check if the reminder is zero. If the reminder is zero break out from the loop as the number is divisible by some other number and is not a prime number. 
+        Use isPrime boolean variable to store the result
+        
+        
+        import java.util.Scanner;
+        
+        
+        public class PrimeNum {
+            // Main method
+            public static void main(String[] args) {
+                // Create a Scanner
+                try (Scanner input = new Scanner(System.in)){
+                    // Get the number from the user
+                    int number = input.nextInt();
+                    boolean isPrime = true;
+                    // Check if the number is prime
+                    for(int i =2; i<number; i++){
+                        if(number%i==0){
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    // Print the result
+                    if(isPrime) System.out.println("It is a Prime Number");
+                    else System.out.println("It is not a Prime Number");
+                }
+            }
+        }
+        Create a program to check if a number is armstrong or not. Use the hints to show the steps clearly in the code
+        Hint => 
+        Armstrong Number is a number whose Sum of cubes of each digit results in the original number as in for e.g. 153 = 1^3 + 5^3 + 3^3
+        Get an integer input and store it in the number variable and define sum variable, initialize it to zero and originalNumber variable and assign it to input number variable
+        Use the while loop till the originalNumber is not equal to zero
+        In the while loop find the reminder number by using the modulus operator as in  number % 10. Find the cube of the number and add it to the sum variable
+        Again in while loop find the quotient of the number and assign it to the original number using number / 10 expression. This romoves the last digit of the original number.
+        Finally check if the number and the sum are the same, if same its an Armstrong number else not. So display accordingly
+        import java.util.Scanner;
+        public class ArmstrongNum {
+            // main method
+            public static void main(String[] args) {
+                // Scanner class to take input from user
+                try (Scanner input = new Scanner(System.in)){
+                    // Taking input from user
+                    int number = input.nextInt();
+                    int sum=0;
+                    int originalNumber = number;
+                    int remainder;
+                    // Checking if the number is Armstrong or not
+                    while (originalNumber!=0){
+                        remainder=originalNumber%10;
+                        sum+=remainder*remainder*remainder;
+                        originalNumber/=10;
+                    }
+                    // Printing the result
+                    if(number==sum) System.out.println("It is Armstrong");
+                    else System.out.println("It is not Armstrong");
+                }
+            }
+        }
+        
+        Create a program to count the number of digits in an integer.
+        Hint => 
+        Get an integer input for the number variable.
+        Create an integer variable count with value 0.
+        Use a loop to iterate until number is not equal to 0.
+        Remove the last digit from number in each iteration
+        Increase count by 1 in each iteration.
+        Finally display the count to show the number of digits
+        import java.util.Scanner;
+        
+        
+        public class NumOfDigits {
+            // main method
+            public static void main(String[] args){
+                // Scanner class to take input from user
+                try(Scanner input = new Scanner(System.in)){
+                    // Taking input from user
+                    int number = input.nextInt();
+                    int count =0;
+                    // Counting the number of digits
+                    while(number!=0){
+                        count++;
+                        number/=10;
+                    }
+                    // Printing the result
+                    System.out.println(count);
+                }
+            }
+        }
+        Create a program to find the BMI of a person
+        Hint => 
+        Take user input in double for the weight (in kg) of the person and height (in cm) for the person and store it in the corresponding variable.
+        Use the formula BMI = weight / (height * height). Note unit is kg/m^2. For this convert cm to meter
+        Use the table to determine the weight status of the person
+         
+        
+        
+        import java.util.Scanner;
+        
+        
+        public class BmiCalc {
+            public static void main(String[] args) {
+                try (Scanner input = new Scanner(System.in)){
+                    double weight = input.nextDouble();
+                    double height = input.nextDouble();
+                    height/=100;
+                    double BMI = weight / (height * height);
+                    if(BMI<=18.4) System.out.println("Underweight");
+                    else if(BMI>=18.5 && BMI<=24.9) System.out.println("Normal");
+                    else if(BMI>=25.0 && BMI<=39.9) System.out.println("Overweight");
+                    else if(BMI>=40) System.out.println("Obese");
+                }
+            }
+        }
+        Create a program to check if a number taken from the user is a Harshad Number.
+        Hint => 
+        A Harshad number is an integer which is divisible by the sum of its digits. 
+        For example, 21 which is perfectly divided by 3 (sum of digits: 2 + 1).
+        Get an integer input for the number variable.
+        Create an integer variable sum with initial value 0.
+        Create a while loop to access each digit of the number.
+        Inside the loop, add each digit of the number to sum.
+        Check if the number is perfectly divisible by the sum.
+        If the number is divisible by the sum, print Harshad Number. Otherwise, print Not a Harshad Number.
+        
+        
+        import java.util.Scanner;
+        
+        
+        public class HarshadNumber {
+            // Main method
+            public static void main(String[] args) {
+                // Scanner class to take input from user
+                try (Scanner input = new Scanner(System.in)){
+                    // Taking input from user
+                    int number = input.nextInt();
+                    int sum = 0;
+                    int temp = number;
+                    // Calculating sum of digits of number
+                    while(number!=0){
+                        sum+=number%10;
+                        number/=10;
+                    }
+                    // Checking if number is Harshad Number or not
+                    if(temp % sum==0) System.out.println("It is Harshad Number");
+                    else System.out.println("It is Not a Harshad Number");
+                }
+            }
+        }
+        Create a program to check if a number is an Abundant Number.
+        Hint => 
+        An abundant number is an integer in which the sum of all the divisors of the number is greater than the number itself. For example,
+        Divisor of 12: 1, 2, 3, 4, 6
+        Sum of divisor: 1 + 2 + 3 + 4 + 6 = 16 > 12
+        Get an integer input for the number variable.
+        Create an integer variable sum with initial value 0.
+        Run a for loop from i = 1 to i < number.
+        Inside the loop, check if number is divisible by i.
+        If true, add i to sum.
+        Outside the loop Check if sum is greater than number.
+        If the sum is greater than the number, print Abundant Number. Otherwise, print Not an Abundant Number.
+        import java.util.Scanner;
+        
+        
+        public class AbundantNum {
+            // Function to check if a number is Abundant or not
+            public static void main(String[] args) {
+                // Taking input from user
+                try (Scanner input = new Scanner(System.in)){
+                    int number = input.nextInt();
+                    int sum = 0;
+                    // Checking if the number is Abundant or not
+                    for(int i=1; i<number ; i++){
+                        if(number%i==0){
+                            sum+=i;
+                        }
+                    }
+                    // Printing the result
+                    if(sum>number) System.out.println("It is a Abundant Number");
+                    else System.out.println("It is Not a Abundant Number");
+                }
+            }
+        }
+        Write a program to create a calculator using switch...case.
+        Hint => 
+        Create two double variables named first and second and a String variable named op.
+        Get input values for all variables.
+        The input for the operator can only be one of the four values: "+", "-", "*" or "/".
+        Run a for loop from i = 1 to i < number.
+        Based on the input value of the op, perform specific operations using the switch...case statement and print the result.
+        If op is +, perform addition between first and second; if it is -, perform subtraction and so on.
+        If op is neither of those 4 values, print Invalid Operator.
+        
+        import java.util.Scanner;
+        
+        
+        public class SwitchCase {
+            // Function to calculate the result of the operation
+            public static void main(String[] args) {
+                // Taking input from the user
+                try (Scanner input = new Scanner(System.in)){
+                    double first = input.nextInt();
+                    double second = input.nextInt();
+                    String op = input.next();
+                    // Calculating the result of the operation
+                    if(op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/")){
+                        switch (op) {
+                            case "+" -> System.out.println(first + second);
+                            case "-" -> System.out.println(first - second);
+                            case "*" -> System.out.println(first * second);
+                            case "/" -> System.out.println(first / second);
+                        }
+                    }
+                    else System.out.println("Invalid Operator");
+                }
+            }
+        }
+        
+        Write a program DayOfWeek that takes a date as input and prints the day of the week that the date falls on. Your program should take three command-line arguments: m (month), d (day), and y (year). For m use 1 for January, 2 for February, and so forth. For output print 0 for Sunday, 1 for Monday, 2 for Tuesday, and so forth. Use the following formulas, for the Gregorian calendar (where / denotes integer division):
+        y0 = y − (14 − m) / 12
+        x = y0 + y0/4 − y0/100 + y0/400
+        m0 = m + 12 × ((14 − m) / 12) − 2
+        d0 = (d + x + 31m0 / 12) mod 7
+        
+        
+        import java.util.Scanner;
+        // Enum to store the days of the week
+        enum Day {Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday;}
+        
+        
+        public class DayOfWeek {
+            // Function to calculate the day of the week
+            public static void main(String[] args) {
+                try (Scanner input = new Scanner(System.in)){
+                    // Taking input from the user
+                    int m = input.nextInt();
+                    int d = input.nextInt();
+                    int y = input.nextInt();
+                    // Calculating the day of the week
+                    int y0 = y - (14 - m) / 12;
+                    int x = y0 + y0/4 - y0/100 + y0/400;
+                    int m0 = m + 12 * ((14 - m) / 12) - 2;
+                    int d0 = (d + x + 31*m0 / 12)%7;
+                    // Printing the day of the week
+                    System.out.print(Day.values()[d0]);
+                }
+            }
+        }
+        
+        "
+    </pre>
+</body>
